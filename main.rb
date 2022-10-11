@@ -15,37 +15,33 @@ class Main
 9- List all authors
 0- Exit'
 
-print 'Choose an Option [0 - 9] : '
+    print 'Choose an Option [0 - 9] : '
     choose = gets.chomp.to_i
 
     case choose
     when 1
-        puts 'List all books'
+      puts 'List all books'
     when 2
-        puts 'List all music albums'
+      puts 'List all music albums'
     when 3
-        puts '3'
+      puts '3'
     when 4
-        puts '4'
+      puts '4'
     when 5
-        puts '5'
+      puts '5'
     when 6
-        puts '6'
+      puts '6'
     when 7
-        puts '7'
+      puts '7'
     when 8
-        puts '8'
+      puts '8'
     when 9
-        puts '9'
+      puts '9'
     when 0
-        puts '*** Thanks for using program ***'
+      puts '*** Thanks for using program ***'
     end
-        
-
   end
 end
-
-
 
 # List all books
 # List all music albums
