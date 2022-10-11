@@ -1,11 +1,47 @@
+require 'date'
+
 class Item
-    def initialize(genre, author, source, label, publish_date)
+    attr_accessor :date
+
+    def initialize(publish_date)
         @id = 0
-        @genre = genre
-        @author = author
-        @source = source
-        @label = label
         @date = publish_date
-        archived = true
+        @genre
+        @author
+        @label
+        @source
+        @archived = false
     end
+
+    def move_to_archive
+        @archived = true if can_be_archived? = true
+    end
+
+    def add_genre(new_genre)
+        @genre = new_genre
+    end
+
+    def add_author(new_author)
+        @author = new_author
+    end
+
+    def add_label(new_label)
+        @label = new_label
+    end
+
+    def add_source(new_source)
+        @source = new_source
+    end
+
+
+    private
+
+    def can_be_archived?
+        if !@date.empty?
+        date = Date.parse(@date)
+        now = Date.today
+        (now&.year - date.year) > 10 ? true : false
+        end
+    end
+
 end
