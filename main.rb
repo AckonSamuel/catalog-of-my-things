@@ -4,7 +4,7 @@ def main
     print_options
     option = gets.chomp.to_i
 
-    handle_case(option)
+  handle_case(option)
 
     break if option.zero?
   end
