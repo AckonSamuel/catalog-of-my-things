@@ -1,24 +1,10 @@
 # require './entity/item'
 
 class Main
-  def entry_point
-    puts 'Welcome to my Catalog'
-
-    puts '1- List all books
-2- List all music albums
-3- List of games
-4- Add a book
-5- Add a music album
-6- Add a game
-7- List all genres
-8- List all labels
-9- List all authors
-0- Exit'
-
-    print 'Choose an Option [0 - 9] : '
-    choose = gets.chomp.to_i
-
-    case choose
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/MethodLength
+  def input_check(number)
+    case number
     when 1
       puts 'List all books'
     when 2
@@ -40,6 +26,31 @@ class Main
     when 0
       puts '*** Thanks for using program ***'
     end
+  end
+
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/MethodLength
+  def entry_text
+    puts 'Welcome to my Catalog'
+
+    puts '1- List all books
+2- List all music albums
+3- List of games
+4- Add a book
+5- Add a music album
+6- Add a game
+7- List all genres
+8- List all labels
+9- List all authors
+0- Exit'
+
+    print 'Choose an Option [0 - 9] : '
+  end
+
+  def entry_point
+    entry_text
+    choose = gets.chomp.to_i
+    input_check(choose)
   end
 end
 
