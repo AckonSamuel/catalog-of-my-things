@@ -1,61 +1,39 @@
-# require './entity/item'
+def main
+  print "\nWelcome to catalog of my things\n"
+  loop do
+    print_options
+    option = gets.chomp.to_i
 
-class Main
-  def entry_point
-    puts 'Welcome to my Catalog'
+    handle_case(option)
 
-    puts '1- List all books
-2- List all music albums
-3- List of games
-4- Add a book
-5- Add a music album
-6- Add a game
-7- List all genres
-8- List all labels
-9- List all authors
-0- Exit'
-
-print 'Choose an Option [0 - 9] : '
-    choose = gets.chomp.to_i
-
-    case choose
-    when 1
-        puts 'List all books'
-    when 2
-        puts 'List all music albums'
-    when 3
-        puts '3'
-    when 4
-        puts '4'
-    when 5
-        puts '5'
-    when 6
-        puts '6'
-    when 7
-        puts '7'
-    when 8
-        puts '8'
-    when 9
-        puts '9'
-    when 0
-        puts '*** Thanks for using program ***'
-    end
-        
-
+    break if option.zero?
   end
 end
 
+def handle_case(option)
+  case option
+  when 1..9
+    print 'Coming Soon...'
+  when 0
+    print 'Thanks for using the app!'
+  else
+    print "Invalid option... Choose one of the options above\n"
+  end
+end
 
+def print_options
+  puts "
+    1. List all books
+    2. List all music albums
+    3. List of games
+    4. List all genres
+    5. List all labels
+    6. List all authors
+    7. Add a book
+    8. Add a music album
+    9. Add a game
+    0. Exit
+    "
+end
 
-# List all books
-# List all music albums
-# List of games
-# List all genres
-# List all labels
-# List all authors
-# Add a book
-# Add a music album
-# Add a game
-
-enry = Main.new
-enry.entry_point
+main
