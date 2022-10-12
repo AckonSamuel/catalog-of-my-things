@@ -1,13 +1,9 @@
-require './entity/item'
+class Author
+  attr_accessor :first_name, :last_name
 
-class Author < Item
-  attr_accessor :first_name, :last_name, :items
+  attr_reader :id, :items
 
-  attr_reader :id
-
-  def initialize(f_name, l_name, publish_date)
-    super(publish_date)
-
+  def initialize(f_name, l_name)
     @id = Random.rand(1..1000)
 
     @first_name = f_name
