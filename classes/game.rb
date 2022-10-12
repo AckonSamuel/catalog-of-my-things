@@ -1,4 +1,4 @@
-require './entity/item'
+require './item'
 require 'time'
 
 class Game < Item
