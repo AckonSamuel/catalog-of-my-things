@@ -4,17 +4,17 @@ class Item
   attr_accessor :date
 
   def initialize(genre, author, source, label, publish_date)
-    @id = 0
+    @id = rand(1..9999)
     @genre = genre
     @author = author
     @source = source
     @label = label
-    @date = publish_date
+    @publish_date = publish_date
     @archived = true
   end
 
   def move_to_archive
-    @archived = true if can_be_archived?
+    @archived = can_be_archived?
   end
 
   def add_genre(new_genre)
@@ -36,9 +36,9 @@ class Item
   private
 
   def can_be_archived?
-    return if @date.empty?
+    return if @publish_date.empty?
 
-    date = Date.parse(@date)
+    date = Date.parse(@publish_date)
     now = Date.today
     (now&.year&.- date.year) > 10
   end
