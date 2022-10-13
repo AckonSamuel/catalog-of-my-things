@@ -1,4 +1,5 @@
 require 'date'
+require_relative 'album'
 
 class Item
   attr_accessor :date
@@ -32,10 +33,6 @@ class Item
 
   def add_source(new_source)
     @source = new_source
-  end
-
-  def add_album
-    puts 'Published date: eg.  year/month/day'
   end
 
   private
