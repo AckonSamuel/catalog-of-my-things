@@ -1,0 +1,50 @@
+require 'date'
+
+class Item
+  attr_accessor :date
+  attr_reader :archived
+
+  def initialize(publish_date)
+    @id = rand(1..999)
+    @date = publish_date
+    @archived = false
+    @genre = ''
+    @author = ''
+    @label = ''
+    @source = ''
+  end
+
+  def move_to_archive
+    @archived = true if can_be_archived?
+  end
+
+  def add_genre(new_genre)
+    @genre = new_genre
+  end
+
+  def add_author(new_author)
+    @author = new_author
+  end
+
+  def add_label(new_label)
+    @label = new_label
+  end
+
+  def add_source(new_source)
+    @source = new_source
+  end
+
+  def add_album
+    puts 'Published date: eg.  year/month/day'
+  end
+
+  private
+
+  def can_be_archived?
+    return if @date.empty?
+
+    date = Date.parse(@date)
+    now = Date.today
+    (now.year - date.year) > 10
+  end
+end
