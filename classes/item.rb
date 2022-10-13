@@ -2,11 +2,12 @@ require 'date'
 
 class Item
   attr_accessor :date
+  attr_reader :archived
 
-  def initialize(publish_date, archived)
+  def initialize(publish_date)
     @id = rand(1..999)
     @date = publish_date
-    @archived = archived
+    @archived = false
   end
 
   def move_to_archive
@@ -36,6 +37,6 @@ class Item
 
     date = Date.parse(@date)
     now = Date.today
-    (now&.year&.- date.year) > 10
+    (now.year - date.year) > 10
   end
 end
