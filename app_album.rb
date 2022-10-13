@@ -3,11 +3,20 @@ class AppAlbum
 
   def initialize
     @albums = []
+    @genres = []
   end
 
   def add_album
     puts 'Creating a new music album'
     puts
+
+    # add genre
+    puts 'Enter genre name: '
+    genre_name = gets.chomp
+    genre = Genre.new(genre_name)
+    @genres << genre unless @genres.include?(genre)
+
+
     print 'Is the album on Spotify[Y/N]: '
     spot = gets.chomp.downcase
     puts 'Sorry, invalid input' unless %w[y n].include?(spot)
@@ -25,8 +34,8 @@ class AppAlbum
   end
 
   def list_albums
-    if @music.length.positive?
-        @music.each_with_index do |album, index|
+    if @albums.length.positive?
+        @albums.each_with_index do |album, index|
             puts "#{index}). On-spotify: #{album.on_spotify}, Publication Date: #{album.publish_date}"
         end
     else
@@ -36,4 +45,5 @@ class AppAlbum
     sleep(1)
     puts
   end
+  
 end
