@@ -8,14 +8,14 @@ class MusicAlbum < Item
   end
 
   def add_album
-    @music_arr.push({
+    {
                       genre: @genre,
                       author: @author,
                       label: @label,
                       source: @source,
                       publish_date: @publish_date,
                       on_spotify: @on_spotify
-                    })
+                    }
   end
 
   def list_album
