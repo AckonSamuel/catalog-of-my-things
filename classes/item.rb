@@ -7,10 +7,10 @@ class Item
     @id = rand(1..999)
     @date = publish_date
     @archived = false
-    @genre
-    @author
-    @label
-    @source
+    @genre = ''
+    @author = ''
+    @label = ''
+    @source = ''
   end
 
   def move_to_archive
@@ -35,7 +35,6 @@ class Item
 
   def add_album
     puts 'Published date: eg.  year/month/day'
-    publish_date = chomp.
   end
 
   private
