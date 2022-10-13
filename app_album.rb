@@ -4,7 +4,7 @@ class AppAlbum
   def initialize
     @albums = []
   end
-git 
+
   def add_album
     puts 'Creating a new music album'
     puts
@@ -22,5 +22,18 @@ git
     new_album = MusicAlbum.new(date, on_spotify: light)
 
     @albums << new_album
+  end
+
+  def list_albums
+    if @music.length.positive?
+        @music.each_with_index do |album, index|
+            puts "#{index}). On-spotify: #{album.on_spotify}, Publication Date: #{album.publish_date}"
+        end
+    else
+        puts
+        puts 'No music albums available'
+    end
+    sleep(1)
+    puts
   end
 end
