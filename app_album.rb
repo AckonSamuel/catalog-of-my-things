@@ -45,5 +45,16 @@ class AppAlbum
     sleep(1)
     puts
   end
+
+  def list_genres
+    if !@genres.length
+        puts 'No genres available'
+    else
+        @genres.each do |genre|
+            puts "#{genre.name}"
+        end
+    end
+    
+  end
   
 end
