@@ -4,11 +4,11 @@ class MusicAlbum < Item
   def initialize(on_spotify: true)
     super(genre, author, source, label, publish_date)
     @on_spotify = on_spotify
-    @music_arr = []
+    @piece = ''
   end
 
-  def add_album
-    {
+  def distract
+    @piece = {
                       genre: @genre,
                       author: @author,
                       label: @label,
@@ -18,12 +18,10 @@ class MusicAlbum < Item
                     }
   end
 
-  def list_album
-    return unless @music_arr.length
-
-    @music_arr.each do |piece|
-      piece.each do |key, value|
-        puts "\n{#{key} : #{value}},\n"
+  def unveil
+    return unless @piece.length
+      @piece.each do |key, value|
+        puts "\n#{key} : #{value},\n"
       end
     end
   end

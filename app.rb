@@ -25,4 +25,14 @@ class App
         @music_albums << new_album
     end
 
+    def list_album
+        return unless @music_albums.length 
+
+        @music_album.each do 
+            puts 'Album: '
+             |album|  album&.distract&.unveil
+        end
+    end
+              
+
 end
