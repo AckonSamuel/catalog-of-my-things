@@ -1,4 +1,7 @@
+require './classes/application'
+
 def main
+  @app = Application.new
   print "\nWelcome to catalog of my things\n"
   loop do
     print_options
@@ -12,9 +15,15 @@ end
 
 def handle_case(option)
   case option
-  when 1..9
-    print 'Coming Soon...'
+  when 3
+    @app.game_list
+  when 6
+    @app.author_list
+  when 9
+    @app.add_game
   when 0
+    @app.store_games
+    @app.store_author
     print 'Thanks for using the app!'
   else
     print "Invalid option... Choose one of the options above\n"
