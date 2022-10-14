@@ -2,6 +2,8 @@ require './classes/application'
 
 def main
   @app = Application.new
+  @app.fetch_game
+  @app.fetch_author
   print "\nWelcome to catalog of my things\n"
   loop do
     print_options
