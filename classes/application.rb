@@ -120,12 +120,20 @@ class Application
   end
 
   def fetch_game
-    data = JSON.parse(File.read('./classes/game.json'))
-    @game = data
+    if File.exist?('./classes/game.json')
+      data = JSON.parse(File.read('./classes/game.json'))
+      @game = data
+    else
+      puts '< game.json > file does not exist !'
+    end
   end
 
   def fetch_author
-    data = JSON.parse(File.read('./classes/author.json'))
-    @author = data
+    if File.exist?('./classes/author.json')
+      data = JSON.parse(File.read('./classes/author.json'))
+      @author = data
+    else
+      puts '< author.json > file does not exist !'
+    end
   end
 end
