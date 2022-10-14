@@ -1,5 +1,8 @@
-require './classes/application'
 
+require './classes/application'
+require_relative 'app_album'
+
+NEW_APP = AppAlbum.new
 def main
   @app = Application.new
   @app.fetch_game
@@ -23,6 +26,13 @@ def handle_case(option)
     @app.author_list
   when 9
     @app.add_game
+  when 1
+    NEW_APP.add_album
+  when 2
+    NEW_APP.list_albums
+  when 4
+    NEW_APP.list_genres
+
   when 0
     @app.store_games
     @app.store_author
