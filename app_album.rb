@@ -19,13 +19,13 @@ class AppAlbum
     puts 'Enter genre name: '
     genre_name = gets.chomp
     genre = Genre.new(genre_name)
-    @genres << genre unless @genres.include?(genre)
+    @genres << genre
 
     print 'Is the album on Spotify[Y/N]: '
     spot = gets.chomp.downcase
     puts 'Sorry, invalid input' unless %w[y n].include?(spot)
     light = false
-    spot == 'y' ? !light : light
+    spot == 'y' ? light = true : light
 
     puts 'Input Published date e.g. 2021-01-01'
     print 'Date: '
@@ -48,34 +48,35 @@ class AppAlbum
       @genres_arr.push({ name: genred.name })
     end
     File.write('./genres.json', JSON.dump(@genres_arr))
+    puts 'New Album added successfully'
   end
 
   def list_albums
-    if @albums.length.positive?
+    if @albums.empty?
+      puts
+      puts 'No music albums available'
+    else
       @albums.each_with_index do |album, index|
         puts "#{index}). On-spotify: #{album.on_spotify}, Publication Date: #{album.date}"
       end
-    else
-      puts
-      puts 'No music albums available'
     end
     sleep(1)
     puts
   end
 
   def list_genres
-    if @genres.length.is_positive?
+    if @genres.empty?
+      puts 'No genres available'
+    else
       @genres.each do |genret|
         puts genret.name.to_s
       end
-    else
-      puts 'No genres available'
     end
   end
 
   def load_albums
     albums_file = File.read('./albums.json')
-    return unless albums_file.length.positive?
+    return if albums_file.empty?
 
     new_albums = JSON.parse(albums_file)
     new_albums.each do |album|
@@ -84,8 +85,8 @@ class AppAlbum
   end
 
   def load_genres
-    genre_file = File.read('./albums.json')
-    return unless genre_file.length.positive?
+    genre_file = File.read('./genres.json')
+    return if genre_file.empty?
 
     new_genre = JSON.parse(genre_file)
     new_genre.each do |genre|
