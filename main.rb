@@ -1,7 +1,11 @@
+require './classes/application'
 require_relative 'app_album'
 
 NEW_APP = AppAlbum.new
 def main
+  @app = Application.new
+  @app.fetch_game
+  @app.fetch_author
   print "\nWelcome to catalog of my things\n"
   loop do
     print_options
@@ -13,20 +17,31 @@ def main
   end
 end
 
+# rubocop:disable Metrics/CyclomaticComplexity
 def handle_case(option)
   case option
+  when 3
+    @app.game_list
+  when 6
+    @app.author_list
+  when 9
+    @app.add_game
   when 1
     NEW_APP.add_album
   when 2
     NEW_APP.list_albums
   when 4
     NEW_APP.list_genres
+
   when 0
+    @app.store_games
+    @app.store_author
     print 'Thanks for using the app!'
   else
     print "Invalid option... Choose one of the options above\n"
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity
 
 def print_options
   puts "
