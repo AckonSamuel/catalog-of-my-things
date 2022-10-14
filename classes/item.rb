@@ -2,7 +2,7 @@ require 'date'
 
 class Item
   attr_accessor :date
-  attr_reader :archived
+  attr_reader :archived, :id
 
   def initialize(publish_date)
     @id = rand(1..999)
