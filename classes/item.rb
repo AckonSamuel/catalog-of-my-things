@@ -34,10 +34,6 @@ class Item
     @source = new_source
   end
 
-  def add_album
-    puts 'Published date: eg.  year/month/day'
-  end
-
   private
 
   def can_be_archived?

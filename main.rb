@@ -1,3 +1,6 @@
+require_relative 'app_album'
+
+NEW_APP = AppAlbum.new
 def main
   print "\nWelcome to catalog of my things\n"
   loop do
@@ -12,8 +15,12 @@ end
 
 def handle_case(option)
   case option
-  when 1..9
-    print 'Coming Soon...'
+  when 1
+    NEW_APP.add_album
+  when 2
+    NEW_APP.list_albums
+  when 4
+    NEW_APP.list_genres
   when 0
     print 'Thanks for using the app!'
   else
