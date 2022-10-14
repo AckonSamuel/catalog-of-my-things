@@ -1,4 +1,3 @@
-
 require './classes/application'
 require_relative 'app_album'
 
