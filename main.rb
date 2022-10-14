@@ -17,6 +17,7 @@ def main
   end
 end
 
+ # rubocop:disable Metrics/CyclomaticComplexity
 def handle_case(option)
   case option
   when 3
@@ -40,6 +41,7 @@ def handle_case(option)
     print "Invalid option... Choose one of the options above\n"
   end
 end
+ # rubocop:enable Metrics/CyclomaticComplexity
 
 def print_options
   puts "
