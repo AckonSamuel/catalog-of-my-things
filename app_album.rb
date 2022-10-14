@@ -36,7 +36,6 @@ class AppAlbum
 
     @albums << new_album
 
-
     @album_arr = []
     @genres_arr = []
 
@@ -45,8 +44,8 @@ class AppAlbum
     end
     File.write('./albums.json', JSON.dump(@album_arr))
 
-    @genres.each do |genre|
-      @genres_arr.push({ name: genre.name})
+    @genres.each do |genred|
+      @genres_arr.push({ name: genred.name })
     end
     File.write('./genres.json', JSON.dump(@genres_arr))
   end
@@ -66,8 +65,8 @@ class AppAlbum
 
   def list_genres
     if @genres.length.is_positive?
-      @genres.each do |genre|
-        puts genre.name.to_s
+      @genres.each do |genret|
+        puts genret.name.to_s
       end
     else
       puts 'No genres available'
