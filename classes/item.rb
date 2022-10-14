@@ -1,5 +1,4 @@
 require 'date'
-require_relative 'album'
 
 class Item
   attr_accessor :date
