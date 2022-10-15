@@ -22,7 +22,7 @@ def main
 end
 
 # rubocop:disable Metrics/CyclomaticComplexity
-def handle_case(option)
+def handle_case(option) # rubocop:disable Metrics/MethodLength
   case option
   when 1
     @app_book.list_books

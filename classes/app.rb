@@ -10,7 +10,7 @@ class App
     @labels = []
   end
 
-  def add_book
+  def add_book # rubocop:disable Metrics/MethodLength
     print 'Publisher: '
     publisher = gets.chomp
     print 'Cover State: '
@@ -69,28 +69,10 @@ class App
   def store_label
     label_item = []
     @labels.each do |labelit|
-      label_item.push({ title: labelit.title, color: labelit.color})
+      label_item.push({ title: labelit.title, color: labelit.color })
     end
     File.write('./classes/label.json', JSON.generate(label_item))
   end
-
-  # def fetch_book
-  #   if File.exist?('./classes/book.json')
-  #     data = JSON.parse(File.read('./classes/book.json'))
-  #     @books = data
-  #   else
-  #     puts '< book.json > file does not exist !'
-  #   end
-  # end
-
-  # def fetch_label
-  #   if File.exist?('./classes/label.json')
-  #     data = JSON.parse(File.read('./classes/label.json'))
-  #     @labels = data
-  #   else
-  #     puts '< label.json > file does not exist !'
-  #   end
-  # end
 
   def fetch_book
     books_file = File.read('./classes/book.json')
