@@ -9,7 +9,7 @@ Here we recorded a video of the project features and implementations
 
 [Group Video Link](https://drive.google.com/file/d/1xo1DM-BpKsGmBE35fATPzuiea0wvlRAm/view?usp=sharing)
 
-![uml diagram](images/uml.png)
+![uml diagram](uml.png)
 
 ## Built With
 - Languages: Ruby
