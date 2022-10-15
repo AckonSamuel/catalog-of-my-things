@@ -1,6 +1,6 @@
 require 'date'
-require 'fileutils'
 require_relative 'book'
+require_relative 'label'
 
 class App
   attr_accessor :books, :lables
@@ -61,7 +61,7 @@ class App
   def store_book
     book_item = []
     @books.each do |bookit|
-      book_item.push({ publisher: bookit.publisher, cover_state: bookit.cover_state, publish_date: bookit.publish_date })
+      book_item.push({ publisher: bookit.publisher, cover_state: bookit.cover_state, publish_date: bookit.date })
     end
     File.write('./classes/book.json', JSON.generate(book_item))
   end
@@ -71,24 +71,44 @@ class App
     @labels.each do |labelit|
       label_item.push({ title: labelit.title, color: labelit.color})
     end
-    File.write('./classes/label.json', JSON.generate(@labels))
+    File.write('./classes/label.json', JSON.generate(label_item))
   end
 
+  # def fetch_book
+  #   if File.exist?('./classes/book.json')
+  #     data = JSON.parse(File.read('./classes/book.json'))
+  #     @books = data
+  #   else
+  #     puts '< book.json > file does not exist !'
+  #   end
+  # end
+
+  # def fetch_label
+  #   if File.exist?('./classes/label.json')
+  #     data = JSON.parse(File.read('./classes/label.json'))
+  #     @labels = data
+  #   else
+  #     puts '< label.json > file does not exist !'
+  #   end
+  # end
+
   def fetch_book
-    if File.exist?('./classes/book.json')
-      data = JSON.parse(File.read('./classes/book.json'))
-      @books = data
-    else
-      puts '< book.json > file does not exist !'
+    books_file = File.read('./classes/book.json')
+    return if books_file.empty?
+
+    new_books = JSON.parse(books_file)
+    new_books.each do |book|
+      @books << Book.new(book['publisher'], book['cover_state'], book['publish_date'])
     end
   end
 
   def fetch_label
-    if File.exist?('./classes/label.json')
-      data = JSON.parse(File.read('./classes/label.json'))
-      @labels = data
-    else
-      puts '< label.json > file does not exist !'
+    label_file = File.read('./classes/label.json')
+    return if label_file.empty?
+
+    new_label = JSON.parse(label_file)
+    new_label.each do |label|
+      @labels << Label.new(label['title'], label['color'])
     end
   end
 end
