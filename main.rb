@@ -20,18 +20,24 @@ end
 # rubocop:disable Metrics/CyclomaticComplexity
 def handle_case(option)
   case option
-  when 3
-    @app.game_list
-  when 6
-    @app.author_list
-  when 9
-    @app.add_game
-  when 8
-    NEW_APP.add_album
+  when 1
+    puts 'coming soon !'
   when 2
     NEW_APP.list_albums
+  when 3
+    @app.game_list
   when 4
     NEW_APP.list_genres
+  when 5
+    puts 'coming soon !'
+  when 6
+    @app.author_list
+  when 7
+    puts 'coming soon !'
+  when 8
+    NEW_APP.add_album
+  when 9
+    @app.add_game
 
   when 0
     @app.store_games
