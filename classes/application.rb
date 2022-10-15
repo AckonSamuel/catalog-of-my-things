@@ -89,23 +89,31 @@ class Application
   # rubocop:enable Metrics/MethodLength
 
   def game_list
-    puts '---------- Game List -----------'
-    @game.each_with_index do |game, index|
-      puts "#{index + 1} - ID : #{game['id']}
+    if @game.empty?
+      puts 'No games available'
+    else
+      puts '---------- Game List -----------'
+      @game.each_with_index do |game, index|
+        puts "#{index + 1} - ID : #{game['id']}
     Multiplayer: #{game['multiplayer']}
     Archived: #{game['archived']}
     Publish date: #{game['published']}"
+      end
     end
     puts '-----------------'
   end
 
   def author_list
-    puts '--------- Author List -----------'
-    @author.each_with_index do |author, index|
-      puts "#{index + 1} - ID : #{author['id']} Name: #{author['first_name']} #{author['last_name']}
+    if @author.empty?
+      puts 'No authors available'
+    else
+      puts '--------- Author List -----------'
+      @author.each_with_index do |author, index|
+        puts "#{index + 1} - ID : #{author['id']} Name: #{author['first_name']} #{author['last_name']}
     Author of Games:"
-      author['items'].each do |game|
-        puts "- ID: #{game['id']}, Multiplay: #{game['multiplayer']}"
+        author['items'].each do |game|
+          puts "- ID: #{game['id']}, Multiplay: #{game['multiplayer']}"
+        end
       end
     end
     puts '-----------------'
@@ -120,20 +128,18 @@ class Application
   end
 
   def fetch_game
-    if File.exist?('./classes/game.json')
-      data = JSON.parse(File.read('./classes/game.json'))
-      @game = data
-    else
-      puts '< game.json > file does not exist !'
-    end
+    game_file = File.read('./classes/game.json')
+    return if game_file.empty?
+
+    data = JSON.parse(game_file)
+    @game = data
   end
 
   def fetch_author
-    if File.exist?('./classes/author.json')
-      data = JSON.parse(File.read('./classes/author.json'))
-      @author = data
-    else
-      puts '< author.json > file does not exist !'
-    end
+    author_file = File.read('./classes/author.json')
+    return if author_file.empty?
+
+    data = JSON.parse(author_file)
+    @author = data
   end
 end
