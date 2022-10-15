@@ -1,11 +1,15 @@
 require './classes/application'
 require_relative 'app_album'
+require_relative './classes/app'
 
 NEW_APP = AppAlbum.new
 def main
   @app = Application.new
   @app.fetch_game
   @app.fetch_author
+  @app_book = App.new
+  @app_book.fetch_book
+  @app_book.fetch_label
   print "\nWelcome to catalog of my things\n"
   loop do
     print_options
@@ -21,7 +25,7 @@ end
 def handle_case(option)
   case option
   when 1
-    puts 'coming soon !'
+    @app_book.list_books
   when 2
     NEW_APP.list_albums
   when 3
@@ -29,11 +33,11 @@ def handle_case(option)
   when 4
     NEW_APP.list_genres
   when 5
-    puts 'coming soon !'
+    @app_book.list_labels
   when 6
     @app.author_list
   when 7
-    puts 'coming soon !'
+    @app_book.add_book
   when 8
     NEW_APP.add_album
   when 9
@@ -42,6 +46,8 @@ def handle_case(option)
   when 0
     @app.store_games
     @app.store_author
+    @app_book.store_book
+    @app_book.store_label
     print 'Thanks for using the app!'
   else
     print "Invalid option... Choose one of the options above\n"
